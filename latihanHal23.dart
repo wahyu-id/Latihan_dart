@@ -9,22 +9,12 @@ void main() {
   ];
   print(pegawai);
 
-  // List<Map<String, dynamic>> pajak = [
-  //   {'nama': 'budi', 'gaji': 5, 'pajak': 0.15},
-  //   {'nama': 'wati', 'gaji': 17, 'pajak': 0.20},
-  // ];
-  // print(pajak);
-
-
-
-  List<Map<String, dynamic>> pajak = pegawai.map((pegawai) {
-    double pajak = pegawai['gaji'] < 10 ? 0.15 : 0.20;
-    return {
-      'nama': pegawai['nama'],
-      'gaji': pegawai['gaji'],
-      'pajak': pajak,
-    };
-  }).toList();
+  List<Map<String, dynamic>> pajak = [
+    for (Map<String, dynamic> p in pegawai)
+      {
+        'nama': p['nama'],'gaji': p['gaji'], 'pajak': p['gaji'] < 10 ? 0.15 : 0.20,
+      }
+  ];
 
   print(pajak);
 }
